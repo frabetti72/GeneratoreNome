@@ -4,30 +4,49 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
-import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import com.example.generatorenome.R
+import com.example.generatorenome.presenter.IPresenter
+import com.example.generatorenome.presenter.Presenter
 import com.google.android.material.textfield.TextInputEditText
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), IView {
+    lateinit var ourText: EditText
+    lateinit var displayText: TextView
+    lateinit var button:Button
+    lateinit var presenter: IPresenter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         setContentView(R.layout.activity_main)
 
-        val casellaTesto: TextView= findViewById(R.id.textView)
-
-        val ourText: TextInputEditText = findViewById(R.id.ourTextBox)
-        //val ourText: TextInputEditText = R.id.ourTextBox
-
-        val button: Button = findViewById(R.id.button)
+        displayText= findViewById(R.id.textView)
+        ourText= findViewById(R.id.ourText)
+        button= findViewById(R.id.button)
         button.setOnClickListener {
-            onButtonClick(ourText)
+            onRiscriviButtonClick()
         }
 
-    }
+        presenter= Presenter()
+        presenter.view=this
+        presenter.onCreate()//questo dovrebbe essere automatico
 
-    fun onButtonClick(ourText: TextInputEditText){
-        var textInputContent: Editable? = ourText.text
+    }
+    /*
+    fun onButtonClick(){
+        var textInputContent: Editable? = ourText.editableText
+        this.displayText.text=this.ourText.editableText.toString()
+
+    }
+    */
+
+    override fun onRiscriviButtonClick(){
+        presenter.onRiscriviButtonClick(ourText.editableText.toString())
+    }
+    override fun riscrivi(output: String){
+        this.displayText.text=output
     }
 }
