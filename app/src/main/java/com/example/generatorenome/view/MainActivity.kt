@@ -1,7 +1,8 @@
-package com.example.generatorenome
+package com.example.generatorenome.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.generatorenome.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
