@@ -3,6 +3,7 @@ package com.example.generatorenome.view
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -21,13 +22,12 @@ class MainActivity : AppCompatActivity() {
 
         val button: Button = findViewById(R.id.button)
         button.setOnClickListener {
-            onButtonClick(this.findViewById(R.id.ourTextBox),this.findViewById(R.id.textView) )
-
+            onButtonClick(ourText)
         }
 
     }
 
-    fun onButtonClick(input: View,output: View){
-        output.edit
+    fun onButtonClick(ourText: TextInputEditText){
+        var textInputContent: Editable? = ourText.text
     }
 }
