@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity(), IView {
         }
 
         presenter= Presenter(this)
-        presenter.onCreate()//questo dovrebbe essere automatico
+        //presenter.onCreate()//questo dovrebbe essere automatico
 
     }
     /*
