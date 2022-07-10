@@ -30,8 +30,7 @@ class MainActivity : AppCompatActivity(), IView {
             onRiscriviButtonClick()
         }
 
-        presenter= Presenter()
-        presenter.view=this
+        presenter= Presenter(this)
         presenter.onCreate()//questo dovrebbe essere automatico
 
     }

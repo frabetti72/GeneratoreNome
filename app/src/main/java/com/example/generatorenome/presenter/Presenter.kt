@@ -6,13 +6,11 @@ import com.example.generatorenome.model.Model
 import com.example.generatorenome.view.IView
 import com.example.generatorenome.view.MainActivity
 
-class Presenter: IPresenter{
+class Presenter(var view: IView ): IPresenter{
     lateinit var model: IModel
-    override lateinit var view: IView
 
     override fun onCreate() {
-        model= Model()
-        model.presenter=this
+        model= Model(this)
     }
 
     override fun onRiscriviButtonClick(input: String){
